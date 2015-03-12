@@ -1,6 +1,8 @@
 ImageSize Export
 ============
 
+This module is work in progress ... 
+
 Pass a folder of images to this module and get infos like: 
 - width
 - height
