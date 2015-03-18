@@ -1,8 +1,6 @@
 Image Size Export
 ============
 
-This module is work in progress ... 
-
 Pass a folder of images to this module and get infos like: 
 - width
 - height
@@ -11,7 +9,6 @@ Pass a folder of images to this module and get infos like:
 - breakpoint 
 
 Written with [ImageSize](https://www.npmjs.com/package/image-size).
-
 
 ## Installation
 
