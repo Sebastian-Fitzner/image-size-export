@@ -1,1 +1,1 @@
-module.exports = require('./lib/imagesizeExport');
+module.exports = require('./lib/imageSizeExport');

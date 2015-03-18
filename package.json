@@ -1,46 +1,46 @@
 {
-	"name": "imagesize-export",
-	"version": "0.0.1",
-	"description": "Export your image informations into json, txt or csv file.",
-	"main": "index.js",
-	"dependencies": {
-		"glob": "^5.0.1",
-		"handlebars": "^3.0.0",
-		"path": "^0.11.14",
-		"image-size": "^0.3.5",
-		"mkdirp": "^0.5.0",
-		"underscore": "^1.8.2"
-	},
-	"devDependencies": {},
-	"scripts": {
-		"test": "npm test"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Sebastian-Fitzner/imagesize-export"
-	},
-	"keywords": [
-		"images",
-		"image",
-		"size",
-		"image",
-		"dimensions",
-		"image",
-		"export",
-		"image",
-		"dimensions",
-		"size",
-		"image",
-		"width",
-		"image",
-		"height",
-		"width",
-		"height"
-	],
-	"author": "Sebastian Fitzner",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/Sebastian-Fitzner/imagesize-export/issues"
-	},
-	"homepage": "https://github.com/Sebastian-Fitzner/imagesize-export"
+  "name": "image-size-export",
+  "version": "0.0.1",
+  "description": "Export your image informations into json. Provide your own handlebars template to export to any format and file structure you need.",
+  "main": "index.js",
+  "dependencies": {
+    "format-json": "^1.0.3",
+    "glob": "^5.0.1",
+    "handlebars": "^3.0.0",
+    "image-size": "^0.3.5",
+    "mkdirp": "^0.5.0",
+    "path": "^0.11.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sebastian-Fitzner/imagesize-export"
+  },
+  "keywords": [
+    "images",
+    "image",
+    "size",
+    "image",
+    "dimensions",
+    "image",
+    "export",
+    "image",
+    "dimensions",
+    "size",
+    "image",
+    "width",
+    "image",
+    "height",
+    "width",
+    "height"
+  ],
+  "author": "Sebastian Fitzner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sebastian-Fitzner/imagesize-export/issues"
+  },
+  "homepage": "https://github.com/Sebastian-Fitzner/imagesize-export"
 }
