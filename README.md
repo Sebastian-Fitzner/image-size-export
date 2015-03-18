@@ -128,8 +128,9 @@ Path to custom or default handlebars template.
 
 ### Custom Handlebars Template
 
-Let's say you are not happy with the default output and want to use a custom handlebars template to generate something really nice. That's is really simple: 
+Let's say you are not happy with the default output and want to use a custom handlebars template to generate something really nice. That's is really simple. 
 
+Define your options:
 ``` js
 imageExport.record({
 	path: 'tmp/pictures/**/*.jpg',
@@ -137,6 +138,43 @@ imageExport.record({
 	template: 'tmp/tpl/custom.hbs',
 	breakpointDelimiter: '-'
 });
+```
+
+Write your template like that: 
+
+``` hbs
+{{#each breakpoints}}
+"{{this}}":
+{{#each ../images}}
+	{{#is ../this breakpoint}}
+	-- "name": "{{ name }}"
+	- "width": {{ width }}
+	- "height": {{ height }}
+	- "path": "{{ path }}"
+	{{/is}}
+{{/each}}
+{{/each}}
+```
+
+And the output will be:
+
+``` yml
+"1025":
+	-- "name": "pic-01--1025.jpg"
+	- "width": 1344
+	- "height": 536
+	- "path": "tmp/pictures/carousel/stage/pic-01--1025.jpg"
+"1025_2x":
+	-- "name": "pic-01--1025_2x.jpg"
+	- "width": 2051
+	- "height": 817
+	- "path": "tmp/pictures/carousel/stage/pic-01--1025_2x.jpg"
+"320":
+	-- "name": "pic-01--320.jpg"
+	- "width": 320
+	- "height": 128
+	- "path": "tmp/pictures/carousel/stage/pic-01--320.jpg"
+	...
 ```
 
 _Please be sure you do not use the `categorizeBy` option, because this option outputs a JSON file and ignores any template._
