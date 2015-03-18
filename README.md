@@ -1,4 +1,4 @@
-ImageSize Export
+Image Size Export
 ============
 
 Pass a folder of images to this module and get infos like: 
@@ -13,12 +13,87 @@ Written with [ImageSize](https://www.npmjs.com/package/image-size).
 
 ## Installation
 
-`$ npm install imagesize-export`
+`npm install image-size-export`
 
-## Usage (wip)
+## Usage
+
+Read pictures infos from a provided source, process its infos and output processed infos to a custom output file (default = JSON).
+
+``` js
+
+var imageExport = require('image-size-export');
+
+imageExport.record({
+	path: 'tmp/pictures/**/*.jpg',
+	output: "tmp/simple.json",
+	breakpointDelimiter: '--'
+});
+
+```
+
+When your file structure looks like that: 
+``` bash
+├───tmp
+│   └───pictures
+│       ├───carousel
+│       │   └───stage
+│       │           pic-01--1025.jpg
+│       │           pic-01--1025_2x.jpg
+│       │           pic-01--320.jpg
+│       │           pic-01--320_2x.jpg
+│       │           pic-01--769.jpg
+│       │
+│       └───marginal
+│           ├───contact
+│           │       pic-01--480.jpg
+│           │       pic-01--480_2x.jpg
+│           │       pic-01--768.jpg
+│           │       pic-01--768_2x.jpg
+│           │       pic-01--769.jpg
+│           │       pic-01--769_2x.jpg
+│           │
+│           └───images
+│                   pic-01--480.jpg
+│                   pic-01--480_2x.jpg
+│                   pic-01--640.jpg
+│                   pic-01--640_2x.jpg
+│                   pic-01--768.jpg
+│                   pic-01--768_2x.jpg
+│                   pic-01--769.jpg
+│                   pic-01--769_2x.jpg
+``` 
+
+You will get the following output:
+
+``` json
+[
+	{
+		"breakpoint": "1025",
+		"name": "pic-01--1025.jpg",
+		"width": 1344,
+		"height": 536,
+		"path": "tmp/pictures/carousel/stage/pic-01--1025.jpg"
+	},
+	{
+		"breakpoint": "1025_2x",
+		"name": "pic-01--1025_2x.jpg",
+		"width": 2051,
+		"height": 817,
+		"path": "tmp/pictures/carousel/stage/pic-01--1025_2x.jpg"
+	},
+	{
+		"breakpoint": "320",
+		"name": "pic-01--320.jpg",
+		"width": 320,
+		"height": 128,
+		"path": "tmp/pictures/carousel/stage/pic-01--320.jpg"
+	},
+	...
+]
+```
 
 ## Options
-
+		
 #### path
 Type: `string`
 Default value: false
@@ -27,29 +102,100 @@ Path to your image files.
 
 #### output
 Type: `string`
-Default value: 'imageSize.json'
+Default value: 'imageSizeExport.json'
 
 Generated JSON file which will be compiled via handlebars template.
 
-#### breakpoints (wip)
+#### categorizeBy
 Type: `string`
-Default value: 'file'
+Default value: false
 
-Define where the module can get the infos for your breakpoint. 
+Define if you want to export your informations as JSON categorized by `breakpoints` or `folders`.
 
-#### delimiter
+#### breakpointDelimiter
 Type: `string`
 Default value: '--'
 
-A string value that is used to set as delimiter for your breakpoints.
+A string value that is used to set as delimiter for your breakpoints which are defined in your filename.
 
 #### template
 Type: `string`
-Default value: 'templates/json.hbs'
+Default value: 'templates/simple.hbs'
 
 Path to custom or default handlebars template.
 
-## Grunt Plugin (wip)
+## Examples
+
+### Custom Handlebars Template
+
+Let's say you are not happy with the default output and want to use a custom handlebars template to generate something really nice. That's is really simple: 
+
+``` js
+imageExport.record({
+	path: 'tmp/pictures/**/*.jpg',
+	output: "tmp/custom.yml",
+	template: 'tmp/tpl/custom.hbs',
+	breakpointDelimiter: '-'
+});
+```
+
+_Please be sure you do not use the `categorizeBy` option, because this option outputs a JSON file and ignores any template._
+
+### Categorize by Folders
+
+If you want to categorize your infos by folder name and export these as JSON file, you can use the following setting: 
+
+``` js
+imageExport.record({
+	path: 'tmp/pictures/**/*.jpg',
+	output: "tmp/folder.json",
+	categorizeBy: 'folders',
+	folderDepth: 2,
+	breakpointDelimiter: '-'
+});
+```
+
+The `folderDepth` option can be used when you need to concatenate multiple folder names to one single string.
+
+### Categorize by Breakpoints
+
+If you want to categorize your infos by breakpoints and export these as JSON file, you can use the following setting: 
+
+``` js
+
+imageExport.record({
+	path: 'tmp/pictures/**/*.jpg',
+	output: "tmp/breakpoints.json",
+	categorizeBy: 'breakpoints',
+	breakpointDelimiter: '--'
+});
+```
+
+The `breakpointDelimiter` option can be used to define your delimiter between breakpoint and filename.
+
+## Grunt Plugin
+
+This package also installs a Grunt plugin. You can enable this plugin in the
+`Gruntfile.js` of your project like that:
+
+    grunt.loadNpmTasks('image-size-export');
+
+### Example
+
+To get all image infos, use the following configuration:
+
+``` js
+imageSizeExport: {
+	simple: {
+		options: {
+			path: 'tmp/pictures/**/*.jpg',
+			output: 'gruntSimple.json',
+			categorizeBy: 'folders',
+			breakpointDelimiter: '--'
+		}
+	}
+}
+```
 
 ## License
 Copyright (c) 2015 Sebastian Fitzner. Licensed under the MIT license.
