@@ -6,7 +6,7 @@ Pass a folder of images to this module and get infos like:
 - height
 - name 
 - path 
-- breakpoint 
+- breakpoint (when you provide this information in your filename)
 
 Written with [ImageSize](https://www.npmjs.com/package/image-size).
 
@@ -92,7 +92,7 @@ You will get the following output:
 ```
 
 ## Options
-		
+
 #### path
 Type: `string`
 Default value: false
@@ -104,6 +104,12 @@ Type: `string`
 Default value: 'imageSizeExport.json'
 
 Generated JSON file which will be compiled via handlebars template.
+
+#### folderDepth
+Type: `number`
+Default value: 1
+
+Define, how many folders should be considered for generating a folder name. 
 
 #### categorizeBy
 Type: `string`

@@ -1,6 +1,6 @@
 {
   "name": "image-size-export",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Export your image informations into json. Provide your own handlebars template to export to any format and file structure you need.",
   "main": "index.js",
   "dependencies": {
