@@ -74,20 +74,8 @@ You will get the following output:
 		"path": "tmp/pictures/carousel/stage/pic-01--1025.jpg"
 	},
 	{
-		"breakpoint": "1025_2x",
-		"name": "pic-01--1025_2x.jpg",
-		"width": 2051,
-		"height": 817,
-		"path": "tmp/pictures/carousel/stage/pic-01--1025_2x.jpg"
-	},
-	{
-		"breakpoint": "320",
-		"name": "pic-01--320.jpg",
-		"width": 320,
-		"height": 128,
-		"path": "tmp/pictures/carousel/stage/pic-01--320.jpg"
-	},
-	...
+		"...": "..."
+	}
 ]
 ```
 
@@ -218,27 +206,7 @@ The `breakpointDelimiter` option can be used to define your delimiter between br
 
 ## Grunt Plugin
 
-This package also installs a Grunt plugin. You can enable this plugin in the
-`Gruntfile.js` of your project like that:
-
-    grunt.loadNpmTasks('image-size-export');
-
-### Example
-
-To get all image infos, use the following configuration:
-
-``` js
-imageSizeExport: {
-	simple: {
-		options: {
-			path: 'tmp/pictures/**/*.jpg',
-			output: 'gruntSimple.json',
-			categorizeBy: 'folders',
-			breakpointDelimiter: '--'
-		}
-	}
-}
-```
+There is alos a grunt wrapper for this npm module. See 
 
 ## License
 Copyright (c) 2015 Sebastian Fitzner. Licensed under the MIT license.
