@@ -206,7 +206,7 @@ The `breakpointDelimiter` option can be used to define your delimiter between br
 
 ## Grunt Plugin
 
-There is alos a grunt wrapper for this npm module. See 
+There is alos a grunt wrapper for this npm module. See [grunt-image-size-export](https://github.com/Sebastian-Fitzner/grunt-image-size-export)
 
 ## License
 Copyright (c) 2015 Sebastian Fitzner. Licensed under the MIT license.
